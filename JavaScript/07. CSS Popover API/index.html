@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Popover API</title>
+  </head>
+
+  <style>
+
+
+    [popover] {
+        padding: 1rem;
+        border-radius: 0.5rem;
+
+        &:popover-open {
+            display: grid;
+            gap: 0.2rem;
+            box-shadow: 0 2px 10px hsl(0 0 0 /.2);
+        }
+
+        &::backdrop {
+            background: hsl(0 0 0 / .5 ) ;
+        }
+    }
+
+
+
+
+  </style>
+  <body>
+    <button popovertarget="pop-1">Open Popover 1</button>
+
+    <!-- Popover #1 -->
+
+    <div id="pop-1" popover>
+      <p>Cool popover 1</p>
+    </div>
+
+    <!-- Popover #2 with close button-->
+    <button popovertarget="pop-2">Open Popover 2</button>
+
+    <div id="pop-2" popover>
+      <p>Cool popover 2</p>
+      <button popovertarget="pop-2" popovertargetaction="hide">Close</button>
+    </div>
+
+  </body>
+</html>
