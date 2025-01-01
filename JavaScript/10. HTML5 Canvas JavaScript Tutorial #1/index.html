@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Canvas with JavaScript</title>
+    <style>
+      iframe .spline-watermark {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+
+    <script defer>
+      const canvas = document.getElementById("canvas");
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      canvas.style.background = "#ff8";
+
+      const context = canvas.getContext("2d");
+
+      context.fillRect(100, 0, 100, 200);
+      context.fillStyle = "red";
+      context.fillRect(100, 500, 100, 200);
+
+      context.beginPath();
+      context.arc(100, 100, 50, 0, Math.PI * 2, false);
+
+      context.strokeStyle = "blue";
+      context.lineWidth = 20;
+
+      context.stroke();
+      context.closePath();
+    </script>
+  </body>
+</html>
+
+<!-- https://youtu.be/p88rNckccmg -->
