@@ -8,7 +8,7 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css',
   // Emulated (Default) 
   // The styles are only applied to the current compoenents.
-  encapsulation: ViewEncapsulation.Emed,
+  encapsulation: ViewEncapsulation.Emulated,
 
   // ShadowDOM
   // 
