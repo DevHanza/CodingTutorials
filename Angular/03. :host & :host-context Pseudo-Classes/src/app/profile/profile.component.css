@@ -1,0 +1,8 @@
+:host {
+    background-color: orangered;
+}
+
+:host-context(.myclass) {
+    display: block;
+    background-color: purple;
+}
