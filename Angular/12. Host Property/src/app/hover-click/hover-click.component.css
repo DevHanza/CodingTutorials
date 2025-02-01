@@ -1,0 +1,10 @@
+:host {
+    display: block;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid #777;
+}
+
+:host(.hovered) {
+    background: orange;
+}
