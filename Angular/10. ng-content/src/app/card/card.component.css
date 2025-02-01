@@ -1,0 +1,12 @@
+.card {
+    display: inline-block;
+    padding: 2rem;
+    border: 1px solid #777;
+    font-family: Inter;
+    margin: 8px;
+
+    h3 {
+        font-weight: bold;
+    }
+
+}
