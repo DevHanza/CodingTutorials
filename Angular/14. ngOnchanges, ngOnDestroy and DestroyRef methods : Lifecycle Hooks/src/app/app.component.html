@@ -1,0 +1,17 @@
+<h2> {{title}} </h2>
+<h3> {{subtitle}} </h3>
+<hr/>
+
+<div>
+  <button (click)="changeInput()">Change Input</button>
+</div>
+
+<div>
+  <button (click)="showToggle()">Show/Hide app-lifecycle-hooks.</button>
+</div>
+
+<app-lifecycle-hooks [x]="x"></app-lifecycle-hooks>
+
+<app-lifecycle-hooks [x]="x" *ngIf="isVisible"></app-lifecycle-hooks>
+
+<router-outlet />
