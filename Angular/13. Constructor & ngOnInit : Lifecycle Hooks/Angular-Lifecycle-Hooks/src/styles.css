@@ -1,0 +1,15 @@
+.box {
+    padding: 20px;
+    background-color: #008080;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+button {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 24px;
+    border: none;
+    color: white;
+    background-color: #008080;
+}
