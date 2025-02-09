@@ -1,0 +1,7 @@
+<h2> {{ title }} </h2>
+
+<div>
+    <app-task *ngFor="let task of tasks" [taskName]="task"></app-task>
+</div>
+
+<router-outlet/>
