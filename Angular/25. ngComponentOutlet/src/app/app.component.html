@@ -1,0 +1,11 @@
+<h2> {{ title }} </h2>
+
+<!-- <app-admin-profile *ngIf="isAdmin"></app-admin-profile>
+<app-user-profile *ngIf="!isAdmin"></app-user-profile> -->
+
+<div>
+    <ng-container *ngComponentOutlet="getProfileComponent()"></ng-container>
+</div>
+
+<router-outlet/>
+
