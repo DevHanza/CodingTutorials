@@ -1,0 +1,15 @@
+<h2> {{ title }}</h2>
+
+<div>
+  <button (click)="onClick($event)">Click Me</button>
+</div>
+
+<div>
+  <span *ngFor="let item of arr"> {{item}} </span>
+</div>
+
+<div>
+  <input type="text" #name>
+  <button (click)="saveDetails(name.value)">Save</button>
+</div>
+<router-outlet/>
