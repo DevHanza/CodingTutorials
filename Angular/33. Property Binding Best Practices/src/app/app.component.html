@@ -1,0 +1,25 @@
+<h2>{{ title }}</h2>
+
+<div>
+  <table border="1">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+    </tr>
+    
+    <tr>
+<!-- <td [colspan]="1 + 1">Leela Web Dev</td> ❌-->
+      <td [colSpan]=" 1 + 1">Leela Web Dev</td> <!-- ✅ -->
+    </tr>
+  </table>
+</div>
+
+<div>
+  <button [disabled]="isDisabled" [class]="classes">Click ME</button>
+</div>
+
+
+<app-items-list [style.backgroundColor]="'red'" [item]="myItem"></app-items-list>
+<app-items-list [obj]="ObjectList"></app-items-list>
+
+<router-outlet/>
