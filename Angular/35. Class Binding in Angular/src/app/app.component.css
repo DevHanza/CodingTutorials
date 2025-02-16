@@ -1,0 +1,12 @@
+.green {
+    background-color: yellowgreen;
+    padding: 1.125rem;
+}
+
+.red {
+    background-color: rgb(246, 90, 90);
+    padding: 1.125rem;
+}
+.border {
+    border: 1px solid #393939;
+}

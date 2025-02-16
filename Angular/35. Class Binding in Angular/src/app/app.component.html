@@ -1,0 +1,26 @@
+<h2>{{ title }}</h2>
+
+<!-- Single Class Binding -->
+<h3 [class.green]="isActive">Single Class Binding</h3>
+
+<!-- Multiple Class Binding -->
+<h3 [ngClass]="{ red: isActive, border: isBordered }">
+  Multiple Class Binding
+</h3>
+
+<!-- Multiple Class Binding with Arrays-->
+<h3 [ngClass]="classes">Multiple Class Binding</h3>
+
+<!-- Precedence of Class Bindings -->
+<br/>
+<h2>Precedence of Class Bindings</h2>
+
+
+<!-- Dynamic Class will take the place! -->
+<p class="green" [class.red]="isActive">Hello World</p> 
+
+<!-- Inline Styles will take the place! -->
+<p class="green" [class.red]="isActive" style="background-color: orange;">Hello World 2</p> 
+
+<router-outlet />
+
