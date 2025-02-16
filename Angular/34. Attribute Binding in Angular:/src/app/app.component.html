@@ -1,0 +1,46 @@
+
+<div>
+<!-- Table 1 -->
+<table border="1">
+  <tr>
+    <td [colSpan]="val">Name</td>
+  </tr>
+  
+  <tr>
+    <td>Jhon</td>
+    <td >Wick</td>
+  </tr>
+</table>
+
+<br/>
+<br/>
+<!-- Table 2 -->
+
+<table border="1" [attr.aria-label]="title">
+  <tr>
+    <td [attr.colspan]="val">Name</td>
+  </tr>
+  
+  <tr>
+    <td>Jhon</td>
+    <td >Wick</td>
+  </tr>
+</table>
+
+</div>
+
+
+<br/>
+<br/>
+
+<!-- SVG EXAMPLE -->
+
+<div>
+  <svg [attr.height]="svgHeight" [attr.width]="svgWidth" xmlns="http://www.w3.org/2000/svg">
+    <circle r="45" cx="50" cy="50" stroke="green" stroke-width="3" fill="red" />
+    Sorry, your browser does not support inline SVG.  
+  </svg> 
+
+</div>
+
+<router-outlet/>
