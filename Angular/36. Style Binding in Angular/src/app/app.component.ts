@@ -11,4 +11,12 @@ export class AppComponent {
   title = '36. Style Bindings in Angular';
 
   isValid = false;
+  myBgColor = "purple";
+
+  myStyleObject = {
+    padding: "1rem",
+    backgroundColor: "maroon",
+    color: "white",
+    fontFamily: "Inter",
+  }
 }

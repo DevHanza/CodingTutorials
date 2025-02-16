@@ -7,11 +7,21 @@
     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam, facere?</p>
 </div>
 
-<div class="box" [style.]>
-    Status
-</div>
+<br>
+
+<div class="box" [style.backgroundColor]=" isValid ? 'green' : 'red' ">Status</div>
+
+<br>
+
+<div class="box" [style.backgroundColor]='myBgColor'>Hellow World</div>
 
 
-<!-- Style Bindings With Array is not supporting. Use Class Bindings Instead. -->
+<!-- Multiple Style Bindings -->
+
+<p [style]="{color: 'red', backgroundColor: 'yellow'}">Hello World</p>
+<p [style]="myStyleObject">Hello World 2</p>
+
+
+<!-- Style Bindings with Array is not supporting. Use Class Bindings Instead. -->
 
 <router-outlet/>
