@@ -1,0 +1,9 @@
+<div>
+    <!-- <input type="text" [value]="textInput" (input)="updateSearchBox($event)"> -->
+</div>
+
+<div>
+    <input type="text" [(ngModel)]="textInput">
+</div>
+
+<p>Search Results for: {{ textInput }} </p>

@@ -1,17 +1,15 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { SearchComponent } from "./search/search.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, SearchComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = '34';
+  title = '39';
 
-  val = 2;
-
-  svgHeight = "100px";
-  svgWidth = "70px";
+  text = "Hellow World!"
 }
