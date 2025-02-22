@@ -1,0 +1,38 @@
+<h2> {{ title }} </h2>
+<hr/>
+
+
+<!-- Normal Way -->
+<p> {{ user.name }} </p>
+
+<hr/>
+
+<!-- Local Template Variables -->
+@let username = user.name;
+<p> {{ username }}</p>
+
+@let greeting = "Hello" + username;
+<h2> {{ greeting }} </h2>
+
+
+@let details = details$ | async;
+<div> {{ details?.length }} </div>
+
+
+<hr/>
+<!-- Scope of the Variables -->
+
+@let TopLevel = 7;
+
+@if (2 > 1) {
+    @let x = 54;
+    <p>nested: {{ x }}</p>
+    <p>nested: {{ TopLevel }}</p>
+}
+
+<p>{{ TopLevel }}</p>
+<!-- <p>{{ x }}</p> --> <!-- Cannot Access from here -->
+
+
+
+<router-outlet/>
