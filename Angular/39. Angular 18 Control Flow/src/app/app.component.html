@@ -1,0 +1,51 @@
+<h2> {{ title }} </h2>
+<hr/>
+
+<!-- OLD SYNTAX -->
+<div>
+    <p *ngIf="a > b"> {{a}} is Greater than {{ b }}.</p>
+    <p *ngIf="a < b"> {{a}} is Less than {{ b }}.</p>
+    <p *ngIf="a === b"> {{a}} is Equal to {{ b }}.</p>
+</div>
+
+
+<!-- NEW SYNTAX -->
+<div>
+    @if (a > b) {
+        <p>{{a}} is Greater than {{ b }}.</p>
+    } @else if (a > b) {
+        <p>{{a}} is Less than {{ b }}.</p>
+    } @else {
+       <p> {{a}} is Equal to {{ b }}.</p>
+    }
+</div>
+
+
+<!-- Observables -->
+ <div>
+    @if (user$ | async; as users) {
+        <p>{{ users.length }}</p>
+    }
+ </div>
+
+ <!-- Loop Over Items -->
+
+ <div>
+     @for (item of items; track item; let count=$count, index=$index, first=$first, even=$even, odd=$odd) {
+         <ul>
+        <li>Value: {{ item }}</li>
+        <li>Count: {{ $count }}</li>
+        <li>Index: {{ $index }}</li>
+        
+         <li>First: {{ $first }}</li>
+         <li>Last: {{ $last }}</li>
+         
+         <li>Even: {{ $odd }}</li>
+         <li>Odd: {{ $even }}</li>
+        </ul>     
+    }
+</div>
+
+
+<router-outlet/>
+
