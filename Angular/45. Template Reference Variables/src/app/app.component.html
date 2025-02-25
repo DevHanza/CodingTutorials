@@ -1,0 +1,23 @@
+<h2>{{ title }}</h2>
+
+<div>
+  <input type="text" #phone />
+
+  <button type="button" (click)="callPhone(phone.value)">App</button>
+</div>
+
+<div>
+  <app-child #ChildComp></app-child>.
+  <button type="button" (click)="callPhone(ChildComp)">Child </button>
+</div>
+
+
+<!-- Template Reference varibles won't work with -->
+
+<!-- @if(2 > 1) {
+  <input type="text" #nestedInput>
+}
+
+<button type="button" (click)="callPhone(nestedInput)> click me. </button>
+
+<router-outlet></router-outlet> -->
