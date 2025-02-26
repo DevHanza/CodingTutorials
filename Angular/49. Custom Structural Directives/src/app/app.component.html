@@ -1,0 +1,22 @@
+<h2> {{ title }} </h2>
+
+<div *appHasPermission="'admin'">This is the admin</div>
+<div *appHasPermission="'some random text'">This is the admin</div>
+<!-- <div *appHasPermission="'admin'">This is the admin</div> -->
+
+
+
+<!-- ***** -->
+
+
+
+<div *appDynamicList="items; let item = $item">
+  {{ item.name }}
+</div>
+
+
+
+
+
+
+<router-outlet />
