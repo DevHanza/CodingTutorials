@@ -1,0 +1,43 @@
+<h2> {{ title }} </h2>
+
+
+<!-- 
+
+Types of Angular directives
+===========================
+1. Components              -	Used with a template. This type of directive is the most common directive type.
+2. Attribute directives    -  Change the appearance or behavior of an element, component, or another directive.
+3. Structural directives   -	Change the DOM layout by adding and removing DOM elements.
+
+
+# Built-in attribute directives
+
+NgClass	   -  Adds and removes a set of CSS classes.
+NgStyle	   -  Adds and removes a set of HTML styles.
+NgModel	   -  Adds two-way data binding to an HTML form element.
+
+
+# Built-in structural directives
+
+NgIf	     -  Conditionally creates or disposes of subviews from the template.
+NgFor	     -  Repeat a node for each item in a list.
+NgSwitch	 -  A set of directives that switch among alternative views.
+
+
+## Hosting a directive without a DOM element
+
+No Element shows in the DOM. Use to render something conditionally without adding a element to the DOM
+
+-->
+
+<p>
+  I turned the corner
+  <ng-container *ngIf="hero">
+    and saw {{hero}}. I waved
+  </ng-container>
+  and continued on my way.
+</p>
+
+ 
+
+<router-outlet/>
