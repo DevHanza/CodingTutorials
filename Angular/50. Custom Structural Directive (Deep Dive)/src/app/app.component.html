@@ -1,0 +1,16 @@
+<h2> {{ title }} </h2>
+
+<div *appShowIf="isVisible" >This is conditionally displayed</div>
+
+<button (click)="isVisible = !isVisible">Toggle</button>
+
+
+
+
+<div *appRepeatTimes="count; let i = index">
+  <p>Repeat count: {{ i }} </p>
+</div>
+
+<input type="number" [(ngModel)]="count">
+
+<router-outlet/>
