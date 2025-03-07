@@ -10,15 +10,15 @@ function MyComponent() {
   function handleYearChange(e) {
     // setCar({year: e.target.value})
     // setCar({...car, year: e.target.value})
-    setCar((c) => ({ ...car, year: e.target.value }));
+    setCar((car) => ({ ...car, year: e.target.value }));
   }
 
   function handleMakeChange(e) {
-    setCar((c) => ({ ...car, make: e.target.value }));
+    setCar((car) => ({ ...car, make: e.target.value }));
   }
 
   function handleModelChange(e) {
-    setCar((c) => ({ ...car, model: e.target.value }));
+    setCar((car) => ({ ...car, model: e.target.value }));
   }
 
   return (
