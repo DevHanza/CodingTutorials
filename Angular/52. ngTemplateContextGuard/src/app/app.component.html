@@ -1,0 +1,20 @@
+<h2>{{ title }}</h2>
+
+<div
+  *appDemo= "
+  demoString; 
+  url: demoUrl; 
+  let version = $implicit; 
+  let demo = demo;
+  let url=url
+  "
+>
+  <div>Version: {{ version }}</div>
+  <div>Demo: {{ demo }}</div>
+
+  <div> {{ url.url }} </div>
+  <div> {{ url.video }} </div>
+
+</div>
+
+<router-outlet />
