@@ -1,0 +1,6 @@
+id, name, email, age, phone , photo
+13, "John Doe" , johndoe@example.com, 22, 1234567890, john.jpg
+14, "Jane Smith" , janesmith@example.com, 21, 0987654321, jane.jpg
+15, "Bob Johnson" , bobjohnson@example.com, 23, 1122334455, bob.jpg
+16, "Alice Williams" , alicewilliams@example.com, 24, 667788990, alice.jpg
+17, "Charlie Brown", charliebrown@example.com , 24, 3344556677, charlie. jpg
