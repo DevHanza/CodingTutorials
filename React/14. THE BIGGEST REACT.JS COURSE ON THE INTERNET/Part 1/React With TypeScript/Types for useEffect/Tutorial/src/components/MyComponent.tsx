@@ -28,6 +28,7 @@ function MyComponent() {
     };
 
     fetchData();
+    
   }, []);
 
   return (
