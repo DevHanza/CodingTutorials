@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import FetchTodo from "./components/FetchToDo";
+import FetchTodo from "./components/FetchTodo";
 
 const App = () => {
   return (

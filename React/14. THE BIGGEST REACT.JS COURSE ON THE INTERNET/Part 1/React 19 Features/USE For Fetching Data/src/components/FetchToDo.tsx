@@ -1,4 +1,5 @@
 import { use } from "react";
+// npm i react@experimental react-dom@experimental
 
 const fetchData = async () => {
   const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
