@@ -1,0 +1,20 @@
+{
+  "name": "graphql-super-simplified-(course)",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon '10. Mutation (Update).js'"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@apollo/server": "^4.12.1",
+    "graphql": "^16.11.0",
+    "nodemon": "^3.1.10"
+  }
+}
