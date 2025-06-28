@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useTransition } from "react";
 
 function App() {
-  const [input, setInput] = useState();
+  const [isPending, startTransition] = useTransition();
+  const [input, setInput] = useState("");
   const [list, setList] = useState([]);
 
   const LIST_SIZE = 20000;
@@ -9,22 +10,26 @@ function App() {
   function handleInputChange(e) {
     setInput(e.target.value);
 
-    const l = [];
+    startTransition(() => {
+      const l = [];
 
-    for (let i = 0; i < LIST_SIZE; i++) {
-      l.push(e.target.value);
-    }
+      for (let i = 0; i < LIST_SIZE; i++) {
+        l.push(e.target.value);
+      }
 
-    setList(l);
+      setList(l);
+    });
   }
 
   return (
     <div>
       <input type="text" value={input} onChange={handleInputChange} />
       <ul>
-        {list.map((item) => {
-          return <li>{item}</li>;
-        })}
+        {isPending
+          ? "Loading..."
+          : list.map((item) => {
+              return <li>{item}</li>;
+            })}
       </ul>
     </div>
   );
