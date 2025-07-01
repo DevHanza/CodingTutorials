@@ -1,32 +1,31 @@
 name: Rename Folders
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: # manually trigger
 
 jobs:
   rename-folders:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-    - name: Rename Folders
-      run: |
-        # Example: rename 'old-folder' to 'new-folder' recursively
-        # Make sure the source folder exists before renaming
-        if [ -d "old-folder" ]; then
-          git mv old-folder new-folder
-        fi
+      - name: Rename folders recursively
+        run: |
+          # Define old and new folder names here
+          OLD_NAME="oldfoldername"
+          NEW_NAME="newfoldername"
 
-        # Example of nested folder renaming
-        if [ -d "src/legacy" ]; then
-          git mv src/legacy src/modern
-        fi
+          # Find and rename directories matching OLD_NAME recursively
+          find . -type d -name "$OLD_NAME" | while read -r dir; do
+            # Rename folder
+            git mv "$dir" "$(dirname "$dir")/$NEW_NAME"
+          done
 
-    - name: Commit Changes
-      run: |
-        git config user.name "github-actions"
-        git config user.email "github-actions@github.com"
-        git commit -am "Rename folders via GitHub Actions" || echo "No changes to commit"
-        git push
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -am "Rename folders from $OLD_NAME to $NEW_NAME"
+          git push
