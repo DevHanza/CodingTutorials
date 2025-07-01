@@ -1,4 +1,4 @@
-name: Rename Folders
+name: Rename Folder by Path
 
 on:
   workflow_dispatch:
@@ -7,15 +7,15 @@ on:
         description: 'Branch to run on'
         required: true
         default: 'main'
-      old_folder_name:
-        description: 'Folder name to rename'
+      folder_path:
+        description: 'Full relative path to folder to rename (e.g. Angular/Folder/My_Folder'
         required: true
       new_folder_name:
         description: 'New folder name'
         required: true
 
 jobs:
-  rename_folders:
+  rename_folder:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout specified branch
@@ -23,18 +23,23 @@ jobs:
         with:
           ref: ${{ github.event.inputs.branch }}
 
-      - name: Find and rename folders recursively
+      - name: Rename folder
         run: |
-          old="${{ github.event.inputs.old_folder_name }}"
-          new="${{ github.event.inputs.new_folder_name }}"
-          
-          # Find all directories named exactly $old (case sensitive)
-          find . -type d -name "$old" | while read -r dir; do
-            # Get the parent directory
-            parent=$(dirname "$dir")
-            echo "Renaming $dir to $parent/$new"
-            mv "$dir" "$parent/$new"
-          done
+          folder_path="${{ github.event.inputs.folder_path }}"
+          new_name="${{ github.event.inputs.new_folder_name }}"
+
+          # Extract parent directory path
+          parent_dir=$(dirname "$folder_path")
+
+          echo "Renaming folder '$folder_path' to '$parent_dir/$new_name'"
+
+          # Check if folder exists
+          if [ -d "$folder_path" ]; then
+            mv "$folder_path" "$parent_dir/$new_name"
+          else
+            echo "Error: Folder '$folder_path' does not exist!"
+            exit 1
+          fi
 
       - name: Commit and push changes
         run: |
@@ -42,7 +47,6 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           git add .
-          git commit -m "Rename folder '${{ github.event.inputs.old_folder_name }}' to '${{ github.event.inputs.new_folder_name }}'"
+          git commit -m "Rename folder '${{ github.event.inputs.folder_path }}' to '${{ github.event.inputs.new_folder_name }}'"
           git push origin ${{ github.event.inputs.branch }}
-        # If no changes, skip failure
         continue-on-error: true
