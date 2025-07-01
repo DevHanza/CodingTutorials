@@ -1,31 +1,48 @@
 name: Rename Folders
 
 on:
-  workflow_dispatch: # manually trigger
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to run on'
+        required: true
+        default: 'main'
+      old_folder_name:
+        description: 'Folder name to rename'
+        required: true
+      new_folder_name:
+        description: 'New folder name'
+        required: true
 
 jobs:
-  rename-folders:
+  rename_folders:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repo
+      - name: Checkout specified branch
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.branch }}
 
-      - name: Rename folders recursively
+      - name: Find and rename folders recursively
         run: |
-          # Define old and new folder names here
-          OLD_NAME="oldfoldername"
-          NEW_NAME="newfoldername"
-
-          # Find and rename directories matching OLD_NAME recursively
-          find . -type d -name "$OLD_NAME" | while read -r dir; do
-            # Rename folder
-            git mv "$dir" "$(dirname "$dir")/$NEW_NAME"
+          old="${{ github.event.inputs.old_folder_name }}"
+          new="${{ github.event.inputs.new_folder_name }}"
+          
+          # Find all directories named exactly $old (case sensitive)
+          find . -type d -name "$old" | while read -r dir; do
+            # Get the parent directory
+            parent=$(dirname "$dir")
+            echo "Renaming $dir to $parent/$new"
+            mv "$dir" "$parent/$new"
           done
 
       - name: Commit and push changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git commit -am "Rename folders from $OLD_NAME to $NEW_NAME"
-          git push
+
+          git add .
+          git commit -m "Rename folder '${{ github.event.inputs.old_folder_name }}' to '${{ github.event.inputs.new_folder_name }}'"
+          git push origin ${{ github.event.inputs.branch }}
+        # If no changes, skip failure
+        continue-on-error: true
