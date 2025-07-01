@@ -1,0 +1,32 @@
+name: Rename Folders
+
+on:
+  workflow_dispatch:
+
+jobs:
+  rename-folders:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Rename Folders
+      run: |
+        # Example: rename 'old-folder' to 'new-folder' recursively
+        # Make sure the source folder exists before renaming
+        if [ -d "old-folder" ]; then
+          git mv old-folder new-folder
+        fi
+
+        # Example of nested folder renaming
+        if [ -d "src/legacy" ]; then
+          git mv src/legacy src/modern
+        fi
+
+    - name: Commit Changes
+      run: |
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
+        git commit -am "Rename folders via GitHub Actions" || echo "No changes to commit"
+        git push
