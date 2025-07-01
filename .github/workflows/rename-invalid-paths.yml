@@ -1,0 +1,51 @@
+name: Sanitize Invalid Paths
+
+on:
+  workflow_dispatch:  # Manual trigger
+    inputs:
+      source_branch:
+        description: 'Branch to sanitize'
+        required: true
+        default: 'dev'
+jobs:
+  rename-paths:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Needed for branching
+          ref: ${{ github.event.inputs.source_branch }}
+
+      - name: Create new branch
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git checkout -b sanitize-paths
+
+      - name: Sanitize file and directory names
+        run: |
+          sudo apt-get install -y rename
+
+          sanitize_name() {
+            echo "$1" | sed -E 's/[:@&]/_/g' | sed 's/[[:space:]]\+$//g'
+          }
+
+          export -f sanitize_name
+
+          find . -depth | while IFS= read -r path; do
+            sanitized=$(sanitize_name "$(basename "$path")")
+            dir=$(dirname "$path")
+            if [ "$(basename "$path")" != "$sanitized" ]; then
+              new_path="$dir/$sanitized"
+              echo "Renaming: $path -> $new_path"
+              git mv "$path" "$new_path" 2>/dev/null || mv "$path" "$new_path"
+            fi
+          done
+
+      - name: Commit and push changes to new branch
+        run: |
+          git add .
+          git commit -m "Sanitize file paths for Windows compatibility" || echo "No changes to commit"
+          git push origin sanitize-paths
